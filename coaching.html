@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nhà HR | Coaching CV 1-on-1 &amp; Đồng hành ứng tuyển Big Corp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#111111;
+    --yellow:#F5D908;
+    --yellow-deep:#C9A227;
+    --cream:#FAF7EF;
+    --brown-wood:#2B211A;
+    --gray:#6b6b6b;
+    --green:#5a8a3a;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Be Vietnam Pro', sans-serif;
+    background:var(--cream);
+    color:var(--black);
+    line-height:1.6;
+    padding-top:60px;
+  }
+  h1,h2,h3{font-family:'Playfair Display', serif;}
+  .wrap{max-width:1280px; margin:0 auto; padding:0 32px;}
+
+  /* NAV */
+  nav{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:12px 24px; border-bottom:1px solid rgba(0,0,0,0.08);
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    background:var(--cream);
+  }
+  nav .logo{font-weight:700; letter-spacing:0.5px;}
+  .btn{
+    display:inline-block; background:var(--black); color:#fff;
+    padding:14px 28px; border-radius:6px; text-decoration:none;
+    font-weight:600; border:2px solid var(--black); transition:0.2s;
+  }
+  .btn:hover{background:var(--yellow); color:var(--black);}
+  .btn-outline{background:transparent; color:var(--black); border:2px solid var(--black);}
+  .btn-outline:hover{background:var(--black); color:#fff;}
+  .btn-nav{padding:10px 22px; font-size:14px;}
+  .btn-gold{background:var(--yellow-deep); color:var(--black); border-color:var(--yellow-deep);}
+  .btn-gold:hover{background:var(--black); color:#fff; border-color:var(--black);}
+
+  /* HERO */
+  .hero{padding:80px 0 100px; display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:13px; letter-spacing:2px; font-weight:700; color:var(--gray);
+    margin-bottom:20px; text-transform:uppercase;
+  }
+  .eyebrow::before{content:""; width:24px; height:2px; background:var(--yellow);}
+  .hero h1{font-size:46px; line-height:1.25; margin-bottom:16px;}
+  .hero h1 em{color:var(--yellow-deep); font-style:italic; font-weight:700; display:block;}
+  .hero p.context{font-size:17px; color:#333; margin-bottom:8px; max-width:540px;}
+  .hero p.quote{font-size:17px; color:#333; margin-bottom:20px; max-width:540px; text-align:justify;}
+  .hero p.quote em{font-style:italic; color:var(--black); font-weight:500;}
+  .hero .reveal{margin-bottom:18px; max-width:540px;}
+  .hero .reveal p{font-size:16px; color:#444; margin-bottom:2px; line-height:1.5;}
+  .hero .reveal p b{color:var(--black); font-weight:700;}
+  .hero .reveal .highlight{
+    font-weight:700; color:var(--black);
+    background:linear-gradient(transparent 62%, var(--yellow) 62%);
+    display:inline;
+  }
+  .hero p.lead{font-size:16px; color:#333; margin-bottom:32px; max-width:540px; text-align:justify;}
+  .hero p.lead b{color:var(--black);}
+  .cta-row{display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
+  .cta-row small{color:var(--gray); font-style:italic; font-size:14px;}
+
+  .hero-visual{
+    position:relative; aspect-ratio:3/4;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .badge-circle{
+    width:100%; height:100%; border-radius:16px;
+    background:var(--black); color:#fff;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:40px;
+    box-shadow:0 30px 60px -12px rgba(0,0,0,0.35);
+    position:relative; overflow:hidden;
+  }
+  .badge-circle::before{
+    content:""; position:absolute; inset:14px; border:1px solid rgba(245,217,8,0.35); border-radius:10px;
+  }
+  .badge-circle .bc-eyebrow{color:var(--yellow); font-size:12px; letter-spacing:2px; text-transform:uppercase; margin-bottom:18px;}
+  .badge-circle .bc-num{font-family:'Playfair Display', serif; font-size:74px; font-weight:700; line-height:1;}
+  .badge-circle .bc-label{font-size:15px; color:#ddd; margin-top:10px; max-width:220px; line-height:1.5;}
+  .badge-circle .bc-foot{margin-top:34px; font-size:12px; color:#999; letter-spacing:0.5px;}
+
+  /* BIG IDEA */
+  .big-idea{background:var(--black); color:#fff; padding:110px 0; text-align:center;}
+  .big-idea .wrap{max-width:820px;}
+  .big-idea p.tag{color:var(--yellow); letter-spacing:2px; font-size:13px; margin-bottom:30px; text-transform:uppercase;}
+  .big-idea h2{font-size:33px; line-height:1.5; font-weight:600;}
+  .big-idea h2 b{color:var(--yellow); font-style:italic; font-weight:700;}
+  .big-idea .caption{margin-top:28px; color:#aaa; font-size:15px;}
+
+  /* PROCESS (3 giai đoạn — thực sự tuần tự nên giữ numbering) */
+  .content-block{padding:100px 0;}
+  .content-block h2{font-size:34px; margin-bottom:12px; max-width:640px;}
+  .content-block h2 em{color:var(--yellow-deep); font-style:italic;}
+  .content-block .section-sub{color:var(--gray); font-size:15px; margin-bottom:50px; max-width:600px;}
+  .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .card{background:#fff; border:1px solid rgba(0,0,0,0.08); border-radius:10px; padding:32px;}
+  .card .num{font-family:'Playfair Display', serif; font-size:40px; font-weight:700; color:#b8b8b8; margin-bottom:16px;}
+  .card .part-label{
+    display:block; font-size:12px; letter-spacing:1.5px; font-weight:700;
+    color:var(--yellow-deep); text-transform:uppercase; margin-bottom:6px;
+  }
+  .card h3{font-size:19px; margin-bottom:14px; font-weight:700; font-family:'Be Vietnam Pro', sans-serif; line-height:1.35;}
+  .card ul{list-style:none; margin-bottom:16px;}
+  .card ul li{
+    display:flex; align-items:flex-start; gap:8px;
+    font-size:14px; color:#444; margin-bottom:8px; line-height:1.5;
+  }
+  .card ul li > span{flex:1; text-align:justify;}
+  .card ul li::before{content:"•"; flex-shrink:0; color:var(--yellow-deep); font-weight:700; line-height:1.5;}
+  .chip{display:inline-block; background:var(--cream); border:1px solid #e0e0e0; border-radius:20px; padding:5px 14px; font-size:12px; font-weight:600; white-space:nowrap;}
+
+  /* QUALIFICATION */
+  .qual{padding:120px 0; display:grid; grid-template-columns:1fr 1.1fr; gap:70px; align-items:start;}
+  .qual .eyebrow{margin-bottom:20px;}
+  .qual h2{font-size:40px; margin-bottom:44px; line-height:1.2;}
+  .qual h2 em{color:var(--yellow); font-style:italic; -webkit-text-stroke:0.5px var(--black);}
+  .qual-list div{
+    display:flex; gap:16px; padding:20px 0; border-bottom:1px solid rgba(0,0,0,0.08);
+    font-size:17px; line-height:1.5;
+  }
+  .qual-list div::before{content:"→"; color:var(--yellow); font-weight:700; flex-shrink:0;}
+  .voice-card{background:var(--black); color:#fff; border-radius:12px; padding:48px;}
+  .voice-card .who{color:var(--yellow); font-size:13px; letter-spacing:1.5px; margin-bottom:24px; text-transform:uppercase;}
+  .voice-card p{font-family:'Playfair Display', serif; font-style:italic; font-weight:400; font-size:20px; line-height:1.8; margin-bottom:18px;}
+  .voice-card p.intro-line{font-style:normal; font-weight:300; color:#ddd; margin-bottom:6px; font-size:19px;}
+  .voice-card p.quote{font-weight:400; text-align:justify; margin-top:18px;}
+  .voice-card .highlight-box{
+    border-left:3px solid var(--yellow); background:rgba(245,217,8,0.08);
+    padding:20px 26px; margin:26px 0 6px; border-radius:0 8px 8px 0;
+  }
+  .voice-card .highlight-box p{font-style:normal; font-weight:400; color:var(--yellow); margin-bottom:0; font-size:19px; line-height:1.7; text-align:justify;}
+  .voice-card .highlight-box b{font-weight:700; color:var(--yellow);}
+  .voice-card .byline{margin-top:24px; color:#999; font-style:normal; font-size:14px; letter-spacing:0.3px;}
+  .voice-card .byline .handle{color:#777;}
+
+  /* PRICING — 4 gói, 2x2 grid */
+  .pricing{background:var(--brown-wood); padding:110px 0; text-align:center; border-top:2px solid rgba(245,217,8,0.4);}
+  .pricing h2{font-size:34px; margin-bottom:16px; max-width:780px; margin-left:auto; margin-right:auto; color:#fff;}
+  .pricing h2 em{color:var(--yellow); font-style:italic;}
+  .pricing .pricing-sub{color:#bbb; font-size:15px; max-width:640px; margin:0 auto 20px;}
+
+  /* Trục lựa chọn: Format x Scope */
+  .axis-legend{
+    display:flex; justify-content:center; gap:28px; flex-wrap:wrap;
+    margin:0 auto 56px; max-width:720px;
+  }
+  .axis-legend .axis-item{
+    display:flex; align-items:center; gap:10px; color:#ddd; font-size:13px;
+  }
+  .axis-legend .axis-dot{width:10px; height:10px; border-radius:50%; background:var(--yellow); flex-shrink:0;}
+
+  .price-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:24px;
+    max-width:920px; margin:0 auto; text-align:left;
+  }
+  .price-card{
+    background:#fff; border:1px solid rgba(0,0,0,0.08); border-radius:14px;
+    padding:36px; position:relative; overflow:hidden;
+    box-shadow:0 24px 48px -20px rgba(0,0,0,0.4);
+    display:flex; flex-direction:column;
+  }
+  .price-card::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:6px;
+    background:linear-gradient(90deg, var(--yellow-deep), var(--yellow));
+  }
+  .price-card.is-featured::before{background:linear-gradient(90deg, var(--black), var(--yellow-deep));}
+  .price-card .format-tag{
+    display:inline-flex; align-self:flex-start; gap:6px; align-items:center;
+    font-size:11px; letter-spacing:1px; font-weight:700; text-transform:uppercase;
+    color:var(--yellow-deep); background:var(--cream); border:1px solid #eadfa8;
+    padding:5px 12px; border-radius:20px; margin-bottom:16px;
+  }
+  .price-card h3{font-size:19px; margin-bottom:6px; font-family:'Be Vietnam Pro',sans-serif; font-weight:700;}
+  .price-card .scope-note{font-size:13px; color:var(--gray); margin-bottom:20px; font-style:italic;}
+  .price-card ul{list-style:none; margin-bottom:24px; flex:1;}
+  .price-card li{
+    display:flex; gap:10px; padding:11px 0; border-bottom:1px solid rgba(0,0,0,0.06); font-size:14px;
+  }
+  .price-card li > span{flex:1;}
+  .price-card li::before{content:"✓"; color:var(--green); font-weight:700;}
+  .price-card .price-row{display:flex; align-items:baseline; gap:8px; margin-bottom:4px;}
+  .price-card .price-row span.amount{
+    font-family:'Playfair Display',serif; font-size:32px; font-weight:700;
+    font-variant-numeric:lining-nums tabular-nums;
+  }
+  .price-card .price-note{color:var(--gray); font-size:12px; font-style:italic; margin-bottom:20px;}
+  .price-card .btn{display:block; text-align:center; width:100%; padding:12px 20px; font-size:14px;}
+
+  .pricing-foot{
+    max-width:640px; margin:44px auto 0; color:#ccc; font-size:14px; line-height:1.7;
+  }
+  .pricing-foot b{color:var(--yellow);}
+
+  /* CLOSING */
+  .closing{background:var(--yellow); padding:110px 0; text-align:center;}
+  .closing p.tag{letter-spacing:2px; font-size:13px; color:#333; margin-bottom:20px; text-transform:uppercase;}
+  .closing h2{font-size:42px; margin-bottom:20px;}
+  .closing h2 em{font-style:italic;}
+  .closing p.sub{max-width:520px; margin:0 auto 36px; color:#333;}
+  .closing .btn{background:var(--black); color:#fff; border-color:var(--black);}
+  .closing .btn:hover{background:#fff; color:var(--black);}
+
+  footer{padding:30px 0; text-align:center; color:var(--gray); font-size:13px; border-top:1px solid rgba(0,0,0,0.08);}
+
+  @media(max-width:800px){
+    .hero{grid-template-columns:1fr; padding:50px 0 60px;}
+    .hero h1{font-size:32px;}
+    .hero-visual{aspect-ratio:16/10;}
+    .cards{grid-template-columns:1fr;}
+    .qual{grid-template-columns:1fr;}
+    .price-grid{grid-template-columns:1fr;}
+    .closing h2{font-size:30px;}
+  }
+  @media(min-width:801px) and (max-width:1000px){
+    .cards{grid-template-columns:repeat(2,1fr);}
+    .qual{grid-template-columns:1fr;}
+    .big-idea h2{font-size:26px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">@Nhahr</div>
+  <a href="#pricing" class="btn btn-nav">Đặt lịch Coaching</a>
+</nav>
+
+<!-- 1. HERO -->
+<section class="hero wrap">
+  <div>
+    <div class="eyebrow">Coaching CV 1-on-1</div>
+    <h1>CV của bạn không thiếu kinh nghiệm.<em>Nó thiếu người khai vấn đúng.</em></h1>
+
+    <p class="context">Có bao giờ bạn ngồi trước bài tập nhóm, đề tài tiểu luận mình từng tâm đắc, mà vẫn không biết:</p>
+    <p class="quote"><em>"Chuyện này thì liên quan gì đến vị trí mình đang apply? Viết sao cho HR thấy được giá trị, chứ không phải đang <b>kể lể</b>?"</em></p>
+    <div class="reveal">
+      <p>Bạn không thiếu "nguyên liệu" — dự án, chứng chỉ, hoạt động CLB đều có cả.</p>
+      <p><b>Cái bạn thiếu là người ngồi cùng bạn "đào bới" và định vị lại nó.</b></p>
+      <p><span class="highlight">Đó chính xác là việc một buổi Coaching 1-on-1 làm được.</span></p>
+    </div>
+    <p class="lead">Nhà HR đồng hành cùng bạn từ bước <b>khai phá "nguyên liệu thô"</b> trong chính học kỳ, dự án, bài tập nhóm bạn đã từng làm — đến khi bạn có trong tay một <b><i>Master CV</i></b> chuẩn gu Big Corp, tự tin nộp đơn Management Trainee, Apprentice hay Internship.</p>
+    <div class="cta-row">
+      <a href="#pricing" class="btn">Xem các gói Coaching →</a>
+      <small>Chỉ nhận số lượng giới hạn mỗi đợt mở đơn</small>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="badge-circle">
+      <span class="bc-eyebrow">Mô hình cố vấn đồng hành</span>
+      <span class="bc-num">1:1</span>
+      <span class="bc-label">Không lý thuyết chung chung — sửa trực tiếp trên chính CV của bạn, cùng Mentor đã "đọc vị" gu tuyển dụng Big Corp.</span>
+      <span class="bc-foot">GIAI ĐOẠN 1 · 2 · 3 — KHAI PHÁ → THỰC CHIẾN → ĐỒNG HÀNH</span>
+    </div>
+  </div>
+</section>
+
+<!-- 2. BIG IDEA -->
+<section class="big-idea">
+  <div class="wrap">
+    <p class="tag">Sự thật ít Mentor nào chịu nói thẳng...</p>
+    <h2>Bạn không cần thêm <b>một lời khuyên vĩ mô</b> nữa.<br>Bạn cần một người <b>ngồi xuống, đọc kỹ CV của bạn</b> và chỉ ra chính xác câu nào đang "chết".</h2>
+    <p class="caption">Đó là lý do Nhà HR không làm tư vấn định hướng chung chung — mà "may đo" trực tiếp trên từng dòng, từng chữ trong hồ sơ của bạn.</p>
+  </div>
+</section>
+
+<!-- 3. QUY TRÌNH 3 GIAI ĐOẠN -->
+<section class="content-block wrap">
+  <h2>Hành trình <em>3 giai đoạn</em>, không phải 1 buổi call rồi thôi:</h2>
+  <p class="section-sub">Đây là trình tự thật sự — mỗi giai đoạn là nền tảng cho giai đoạn sau, không thể đảo ngược.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="num">01</div>
+      <span class="part-label">GIAI ĐOẠN 1 · PRE-COACHING</span>
+      <h3>Khai phá tiềm năng</h3>
+      <ul>
+        <li><span>Bạn điền Form khảo sát riêng của Nhà HR — liệt kê môn học, bài tập nhóm tâm đắc, đề tài tiểu luận, hoạt động CLB.</span></li>
+        <li><span>Mentor nghiên cứu trước "nguyên liệu thô" này để tìm ra những "ngách" có thể khai thác.</span></li>
+      </ul>
+      <span class="chip">Outcome: Career Persona Blueprint</span>
+    </div>
+    <div class="card">
+      <div class="num">02</div>
+      <span class="part-label">GIAI ĐOẠN 2 · COACHING</span>
+      <h3>Thực chiến 1-on-1</h3>
+      <ul>
+        <li><span>Buổi khai vấn 60–90 phút: đào sâu từng dự án, bóc tách công cụ, phương pháp, kết quả cụ thể.</span></li>
+        <li><span>Áp dụng công thức viết câu hành động hướng kết quả (Impact-driven) ngay trên chính bài tập trường lớp của bạn.</span></li>
+      </ul>
+      <span class="chip">Outcome: Master CV chuẩn ATS + Layout Canva</span>
+    </div>
+    <div class="card">
+      <div class="num">03</div>
+      <span class="part-label">GIAI ĐOẠN 3 · POST-COACHING</span>
+      <h3>Đồng hành</h3>
+      <ul>
+        <li><span>Vòng chỉnh sửa độc quyền: Mentor sửa chi tiết từng câu chữ, căn layout, tối ưu từ khóa ATS trực tiếp trên file.</span></li>
+        <li><span>Hỗ trợ giải đáp qua Zalo trong khoảng thời gian đi kèm gói bạn chọn.</span></li>
+      </ul>
+      <span class="chip">Outcome: Quyền truy cập cộng đồng Nhà HR</span>
+    </div>
+  </div>
+</section>
+
+<!-- 4. QUALIFICATION + VOICE -->
+<section class="qual wrap">
+  <div>
+    <div class="eyebrow">Coaching này dành cho ai?</div>
+    <h2>Bạn nên đặt lịch nếu...</h2>
+    <div class="qual-list">
+      <div>Bạn chưa đi làm thực tế, không biết lấy gì để viết vào CV.</div>
+      <div>Bạn có nhiều bài tập nhóm ở trường nhưng thấy nó "nhỏ nhặt", không biết viết sao cho chuyên nghiệp.</div>
+      <div>Bạn chưa định vị được thế mạnh bản thân phù hợp với gu tuyển dụng Big Corp.</div>
+      <div>Bạn từng nộp CV đại trà, bị reject, và không muốn "thử sai" lần nữa với một kỳ tuyển dụng chỉ đến một lần trong năm.</div>
+      <div>Bạn không hứng thú với văn mẫu tràn lan — muốn một giải pháp "may đo" cho đúng câu chuyện của riêng mình.</div>
+    </div>
+  </div>
+  <div class="voice-card">
+    <div class="who">ĐIỀU MỘT MENTOR THỰC CHIẾN LÀM KHÁC:</div>
+    <p class="intro-line">Ai cũng có thể nói "hãy dùng số liệu, hãy viết action verb".</p>
+    <p class="intro-line">Nhưng biết bài nghiên cứu môn Marketing của bạn nên kể theo hướng nào —</p>
+    <p class="quote">— đó là lý do Coaching 1-on-1 không thể thay thế bằng một bài viết hướng dẫn chung chung trên mạng.</p>
+    <div class="highlight-box">
+      <p>Cơ hội vào các chương trình như Management Trainee hay Apprentice <b>chỉ đến một lần trong năm</b> — không phải lúc để tự mò mẫm và thử sai.</p>
+    </div>
+    <div class="byline">— NhàHR <span class="handle">· Mô hình Cố vấn Đồng hành</span></div>
+  </div>
+</section>
+
+<!-- 5. PRICING — 4 GÓI -->
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <h2>Chọn gói phù hợp với <em>tốc độ và ngân sách</em> của bạn.</h2>
+    <p class="pricing-sub">4 gói được thiết kế theo 2 trục: <b style="color:#fff;">Hình thức</b> (Async qua Zalo/Email, hoặc Live 1-on-1) và <b style="color:#fff;">Phạm vi</b> (CV riêng lẻ, hoặc trọn bộ hồ sơ ứng tuyển).</p>
+
+    <div class="axis-legend">
+      <div class="axis-item"><span class="axis-dot"></span>Async: Mentor sửa qua tin nhắn/email theo lượt, bạn chủ động thời gian</div>
+      <div class="axis-item"><span class="axis-dot"></span>Live: Có buổi Coaching 1-on-1 trực tiếp qua Zoom</div>
+    </div>
+
+    <div class="price-grid">
+      <!-- GÓI 1: ENTRY -->
+      <div class="price-card">
+        <span class="format-tag">Async · Entry</span>
+        <h3>Gói Chỉnh sửa CV</h3>
+        <p class="scope-note">Sửa CV qua email &amp; tin nhắn Zalo — không có buổi gặp trực tiếp.</p>
+        <ul>
+          <li><span>Gửi CV bản nháp, nhận feedback chi tiết qua email/Zalo</span></li>
+          <li><span>Tối ưu từ khóa chuẩn bộ lọc ATS</span></li>
+          <li><span>Chỉnh sửa theo lượt trong thời gian gói</span></li>
+        </ul>
+        <div class="price-row"><span class="amount">399K</span></div>
+        <div class="price-note">Phù hợp nếu bạn đã có bản nháp và cần Mentor "gọt dũa" lại.</div>
+        <a href="#" class="btn btn-outline">Chọn gói Entry →</a>
+      </div>
+
+      <!-- GÓI 2: MID -->
+      <div class="price-card">
+        <span class="format-tag">Async · Mid</span>
+        <h3>Gói CV + Cover Letter</h3>
+        <p class="scope-note">Sửa qua email &amp; Zalo — mở rộng thêm Cover Letter.</p>
+        <ul>
+          <li><span>Mọi hạng mục của gói Entry</span></li>
+          <li><span>Sửa thêm Cover Letter đi kèm, khớp giọng văn với CV</span></li>
+          <li><span>Đảm bảo tính nhất quán câu chuyện xuyên suốt hồ sơ</span></li>
+        </ul>
+        <div class="price-row"><span class="amount">479K</span></div>
+        <div class="price-note">Phù hợp nếu chương trình bạn apply yêu cầu cả Cover Letter.</div>
+        <a href="#" class="btn btn-outline">Chọn gói Mid →</a>
+      </div>
+
+      <!-- GÓI 3: PREMIUM (featured) -->
+      <div class="price-card is-featured">
+        <span class="format-tag">Live 1-on-1 · Premium</span>
+        <h3>Gói Coaching CV</h3>
+        <p class="scope-note">Có buổi Coaching 1-on-1 trực tiếp qua Zoom, đi trọn 3 giai đoạn.</p>
+        <ul>
+          <li><span>Buổi khai vấn 1-on-1 (60–90 phút) đào sâu kinh nghiệm cá nhân</span></li>
+          <li><span>Master CV chuẩn ATS + layout Canva chuyên nghiệp</span></li>
+          <li><span>Hỗ trợ sửa bài qua Zalo sau buổi Coaching</span></li>
+        </ul>
+        <div class="price-row"><span class="amount">599K</span></div>
+        <div class="price-note">Gói được đề xuất nếu bạn muốn "may đo" từ gốc, không chỉ sửa câu chữ.</div>
+        <a href="#" class="btn btn-gold">Chọn gói Premium →</a>
+      </div>
+
+      <!-- GÓI 4: LIVE COMBO -->
+      <div class="price-card">
+        <span class="format-tag">Live 1-on-1 · Combo</span>
+        <h3>Gói Combo Toàn diện</h3>
+        <p class="scope-note">Trọn bộ hồ sơ ứng tuyển — không chỉ riêng CV.</p>
+        <ul>
+          <li><span>Mọi hạng mục của gói Premium</span></li>
+          <li><span>Sửa thêm Cover Letter</span></li>
+          <li><span>Tối ưu trang LinkedIn cá nhân</span></li>
+          <li><span>Xây dựng Career Motivation Statement</span></li>
+        </ul>
+        <div class="price-row"><span class="amount">849K</span></div>
+        <div class="price-note">Phù hợp nếu bạn muốn chuẩn bị trọn bộ hồ sơ cho một mùa ứng tuyển lớn.</div>
+        <a href="#" class="btn btn-outline">Chọn gói Combo →</a>
+      </div>
+    </div>
+
+    <p class="pricing-foot">Số lượng slot Coaching Live giới hạn theo mỗi đợt mở đơn để đảm bảo chất lượng "may đo" cho từng học viên. <b>Đăng ký sớm để giữ chỗ.</b></p>
+  </div>
+</section>
+
+<!-- 6. CLOSING -->
+<section class="closing">
+  <div class="wrap">
+    <p class="tag">Kỳ tuyển dụng lớn chỉ đến một lần trong năm</p>
+    <h2>Đừng để CV cũ <em>giữ bạn ở lại vòng gửi xe.</em></h2>
+    <p class="sub">Chọn gói phù hợp với bạn ngay hôm nay — Mentor Nhà HR sẽ đồng hành cùng bạn từ bước khai phá đến khi có trong tay Master CV thực chiến.</p>
+    <a href="#pricing" class="btn">Xem lại 4 gói Coaching →</a>
+  </div>
+</section>
+
+<footer>
+  @NhaHR · Coaching CV 1-on-1 &amp; Đồng hành ứng tuyển Big Corp · © 2026 NhàHR · All rights reserved
+</footer>
+
+<!-- TODO (Panh điền khi có data thật):
+  1. Thay href="#" ở 4 nút CTA gói bằng link Google Form/Zalo đặt lịch tương ứng từng gói.
+  2. Thêm section Social Proof / Kết quả thực chiến riêng cho Coaching khi có case thật (không dùng data từ trang CV Foundation).
+  3. Điền tên/bio Mentor thật nếu muốn cá nhân hóa voice-card thay vì giữ ẩn danh "Nhà HR".
+-->
+
+</body>
+</html>
